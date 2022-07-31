@@ -10,11 +10,20 @@ const App = () => {
     {id: 3, text: "JAVA SCRIPT" ,checked: false},
     {id: 4, text: "REACT" ,checked: false}
   ])
+  const [newId, setNewId] = useState(5)
 
+  const removeBtn = id => {
+    const result = todos.filter(todo => todo.id !== id)
+    setTodos(result);
+  }
+
+
+
+  console.log("todos",todos)
   return(
   <TodoTemplate>
-    <TodoInsert />
-    <TodoList todos={todos}/>
+    <TodoInsert todos={todos} setTodos={setTodos} newId={newId} setNewId={setNewId}/>
+    <TodoList todos={todos} removeBtn={removeBtn} />
   </TodoTemplate>
   )
 };
